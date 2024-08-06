@@ -1,0 +1,21 @@
+<%- include("header") -%>
+
+    <div class="box" id="heading">
+        <h1><%= date %></h1>
+        <h1><%= content %></h1>
+    </div>
+    <div class="box">
+        <% toDo.forEach(function(item){ %>
+            <form action="/del" method="post">
+                <input type="checkbox" name="checkbox" value=<%= item._id %> onchange=this.form.submit()>
+                <input type="hidden" name="listName" value=<%= content %>></input>
+                <p><%= item.name %></p>
+            </form> 
+        <% }) %>
+        <form action="/" method="post">
+            <input type="text" name="task" id="taskID" placeholder="Write your to-do work" required autofocus>
+            <button type="submit" name="button" value=<%= content %>>+</button>
+        </form>
+    </div>
+
+<%- include("footer") -%>
